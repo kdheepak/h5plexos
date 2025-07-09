@@ -88,9 +88,9 @@ class PLEXOSSolution:
     def query_object_property(
             self, object_class, prop,
             names=slice(None), categories=slice(None),
-            timescale="interval", timespan=slice(None), phase="ST"):
+            timescale="interval", timespan=slice(None), phase="ST", pluralize=True):
         
-        if ((0,6,0) <= self.version and self.version < (0,7,0)):
+        if ((0,6,0) <= self.version and self.version < (0,7,0)) and pluralize:
             object_class += "s"
         
         obj_lookup = self.objects[object_class].loc[(categories, names),].sort_values()
